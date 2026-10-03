@@ -1,0 +1,355 @@
+@import "tailwindcss";
+
+/* ========================================================
+   SURYASAKTI SCADA MULTI-THEME ENGINE
+   ======================================================== */
+
+/* Transitions for smooth visual switching */
+body, [data-theme] {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+/* 1. OBSIDIAN SCADA (DEFAULT DARK) */
+:root, [data-theme="obsidian"] {
+  --theme-bg-main: #020617;
+  --theme-bg-card: #0f172a;
+  --theme-border: #1e293b;
+  --theme-accent: #10b981;
+}
+
+/* 2. SOLAR AMBER (Golden Sun & High-Noon Warmth) */
+[data-theme="solar"] body,
+[data-theme="solar"].theme-root,
+[data-theme="solar"] .bg-slate-950,
+[data-theme="solar"] .bg-slate-950\/80,
+[data-theme="solar"] .bg-slate-950\/90,
+[data-theme="solar"] .bg-slate-950\/60 {
+  background-color: #0c0904 !important;
+}
+[data-theme="solar"] .bg-slate-900,
+[data-theme="solar"] .bg-slate-900\/80,
+[data-theme="solar"] .bg-slate-900\/60,
+[data-theme="solar"] .bg-slate-900\/40 {
+  background-color: #181208 !important;
+}
+[data-theme="solar"] .bg-slate-800,
+[data-theme="solar"] .bg-slate-800\/80,
+[data-theme="solar"] .bg-slate-800\/60,
+[data-theme="solar"] .bg-slate-800\/40 {
+  background-color: #2b1f0c !important;
+}
+[data-theme="solar"] .border-slate-800,
+[data-theme="solar"] .border-slate-800\/80,
+[data-theme="solar"] .border-slate-800\/60 {
+  border-color: #423015 !important;
+}
+[data-theme="solar"] .border-slate-700 {
+  border-color: #5c431d !important;
+}
+[data-theme="solar"] .text-emerald-400,
+[data-theme="solar"] .text-emerald-300 {
+  color: #fbbf24 !important;
+}
+[data-theme="solar"] .bg-emerald-500\/20,
+[data-theme="solar"] .bg-emerald-500\/10 {
+  background-color: rgba(245, 158, 11, 0.2) !important;
+}
+[data-theme="solar"] .border-emerald-500\/40,
+[data-theme="solar"] .border-emerald-500\/30,
+[data-theme="solar"] .border-emerald-500\/20 {
+  border-color: rgba(245, 158, 11, 0.45) !important;
+}
+[data-theme="solar"] .bg-emerald-600 {
+  background-color: #d97706 !important;
+}
+[data-theme="solar"] .bg-emerald-950\/60,
+[data-theme="solar"] .bg-emerald-950\/40 {
+  background-color: rgba(69, 39, 4, 0.6) !important;
+}
+
+/* 3. OCEANIC WIND (Deep Sapphire & Electric Cyan Breeze) */
+[data-theme="oceanic"] body,
+[data-theme="oceanic"].theme-root,
+[data-theme="oceanic"] .bg-slate-950,
+[data-theme="oceanic"] .bg-slate-950\/80,
+[data-theme="oceanic"] .bg-slate-950\/90,
+[data-theme="oceanic"] .bg-slate-950\/60 {
+  background-color: #030816 !important;
+}
+[data-theme="oceanic"] .bg-slate-900,
+[data-theme="oceanic"] .bg-slate-900\/80,
+[data-theme="oceanic"] .bg-slate-900\/60,
+[data-theme="oceanic"] .bg-slate-900\/40 {
+  background-color: #081329 !important;
+}
+[data-theme="oceanic"] .bg-slate-800,
+[data-theme="oceanic"] .bg-slate-800\/80,
+[data-theme="oceanic"] .bg-slate-800\/60,
+[data-theme="oceanic"] .bg-slate-800\/40 {
+  background-color: #0e2247 !important;
+}
+[data-theme="oceanic"] .border-slate-800,
+[data-theme="oceanic"] .border-slate-800\/80,
+[data-theme="oceanic"] .border-slate-800\/60 {
+  border-color: #17376e !important;
+}
+[data-theme="oceanic"] .border-slate-700 {
+  border-color: #1f478a !important;
+}
+[data-theme="oceanic"] .text-emerald-400,
+[data-theme="oceanic"] .text-emerald-300 {
+  color: #38bdf8 !important;
+}
+[data-theme="oceanic"] .bg-emerald-500\/20,
+[data-theme="oceanic"] .bg-emerald-500\/10 {
+  background-color: rgba(56, 189, 248, 0.2) !important;
+}
+[data-theme="oceanic"] .border-emerald-500\/40,
+[data-theme="oceanic"] .border-emerald-500\/30,
+[data-theme="oceanic"] .border-emerald-500\/20 {
+  border-color: rgba(56, 189, 248, 0.45) !important;
+}
+[data-theme="oceanic"] .bg-emerald-600 {
+  background-color: #0284c7 !important;
+}
+[data-theme="oceanic"] .bg-emerald-950\/60,
+[data-theme="oceanic"] .bg-emerald-950\/40 {
+  background-color: rgba(3, 40, 75, 0.6) !important;
+}
+
+/* 4. CYBER MATRIX (Pitch Black & Radioactive Neon Telemetry) */
+[data-theme="cyber"] body,
+[data-theme="cyber"].theme-root,
+[data-theme="cyber"] .bg-slate-950,
+[data-theme="cyber"] .bg-slate-950\/80,
+[data-theme="cyber"] .bg-slate-950\/90,
+[data-theme="cyber"] .bg-slate-950\/60 {
+  background-color: #010402 !important;
+}
+[data-theme="cyber"] .bg-slate-900,
+[data-theme="cyber"] .bg-slate-900\/80,
+[data-theme="cyber"] .bg-slate-900\/60,
+[data-theme="cyber"] .bg-slate-900\/40 {
+  background-color: #051207 !important;
+}
+[data-theme="cyber"] .bg-slate-800,
+[data-theme="cyber"] .bg-slate-800\/80,
+[data-theme="cyber"] .bg-slate-800\/60,
+[data-theme="cyber"] .bg-slate-800\/40 {
+  background-color: #0a240f !important;
+}
+[data-theme="cyber"] .border-slate-800,
+[data-theme="cyber"] .border-slate-800\/80,
+[data-theme="cyber"] .border-slate-800\/60 {
+  border-color: #0f3d19 !important;
+}
+[data-theme="cyber"] .border-slate-700 {
+  border-color: #175424 !important;
+}
+[data-theme="cyber"] .text-emerald-400,
+[data-theme="cyber"] .text-emerald-300 {
+  color: #00ff66 !important;
+  text-shadow: 0 0 8px rgba(0, 255, 102, 0.35);
+}
+[data-theme="cyber"] .bg-emerald-500\/20,
+[data-theme="cyber"] .bg-emerald-500\/10 {
+  background-color: rgba(0, 255, 102, 0.16) !important;
+}
+[data-theme="cyber"] .border-emerald-500\/40,
+[data-theme="cyber"] .border-emerald-500\/30,
+[data-theme="cyber"] .border-emerald-500\/20 {
+  border-color: rgba(0, 255, 102, 0.45) !important;
+}
+[data-theme="cyber"] .bg-emerald-600 {
+  background-color: #00b347 !important;
+}
+
+/* 5. QUANTUM AMETHYST (Deep Nebula Purple & Ultraviolet) */
+[data-theme="amethyst"] body,
+[data-theme="amethyst"].theme-root,
+[data-theme="amethyst"] .bg-slate-950,
+[data-theme="amethyst"] .bg-slate-950\/80,
+[data-theme="amethyst"] .bg-slate-950\/90,
+[data-theme="amethyst"] .bg-slate-950\/60 {
+  background-color: #090312 !important;
+}
+[data-theme="amethyst"] .bg-slate-900,
+[data-theme="amethyst"] .bg-slate-900\/80,
+[data-theme="amethyst"] .bg-slate-900\/60,
+[data-theme="amethyst"] .bg-slate-900\/40 {
+  background-color: #130826 !important;
+}
+[data-theme="amethyst"] .bg-slate-800,
+[data-theme="amethyst"] .bg-slate-800\/80,
+[data-theme="amethyst"] .bg-slate-800\/60,
+[data-theme="amethyst"] .bg-slate-800\/40 {
+  background-color: #210d3f !important;
+}
+[data-theme="amethyst"] .border-slate-800,
+[data-theme="amethyst"] .border-slate-800\/80,
+[data-theme="amethyst"] .border-slate-800\/60 {
+  border-color: #3b176e !important;
+}
+[data-theme="amethyst"] .border-slate-700 {
+  border-color: #532099 !important;
+}
+[data-theme="amethyst"] .text-emerald-400,
+[data-theme="amethyst"] .text-emerald-300 {
+  color: #c084fc !important;
+}
+[data-theme="amethyst"] .bg-emerald-500\/20,
+[data-theme="amethyst"] .bg-emerald-500\/10 {
+  background-color: rgba(192, 132, 252, 0.18) !important;
+}
+[data-theme="amethyst"] .border-emerald-500\/40,
+[data-theme="amethyst"] .border-emerald-500\/30,
+[data-theme="amethyst"] .border-emerald-500\/20 {
+  border-color: rgba(192, 132, 252, 0.45) !important;
+}
+[data-theme="amethyst"] .bg-emerald-600 {
+  background-color: #9333ea !important;
+}
+[data-theme="amethyst"] .bg-emerald-950\/60,
+[data-theme="amethyst"] .bg-emerald-950\/40 {
+  background-color: rgba(50, 16, 85, 0.6) !important;
+}
+
+/* 6. DAYLIGHT SHIFT (Clean, Crisp High-Contrast Mode for Bright Rooms) */
+[data-theme="light"] body,
+[data-theme="light"].theme-root,
+[data-theme="light"] .bg-slate-950,
+[data-theme="light"] .bg-slate-950\/80,
+[data-theme="light"] .bg-slate-950\/90,
+[data-theme="light"] .bg-slate-950\/60 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+[data-theme="light"] .bg-slate-900,
+[data-theme="light"] .bg-slate-900\/80,
+[data-theme="light"] .bg-slate-900\/60,
+[data-theme="light"] .bg-slate-900\/40 {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+[data-theme="light"] .bg-slate-800,
+[data-theme="light"] .bg-slate-800\/80,
+[data-theme="light"] .bg-slate-800\/60,
+[data-theme="light"] .bg-slate-800\/40 {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+[data-theme="light"] .border-slate-800,
+[data-theme="light"] .border-slate-800\/80,
+[data-theme="light"] .border-slate-800\/60 {
+  border-color: #cbd5e1 !important;
+}
+[data-theme="light"] .border-slate-700 {
+  border-color: #94a3b8 !important;
+}
+[data-theme="light"] .text-slate-100,
+[data-theme="light"] .text-white {
+  color: #0f172a !important;
+}
+[data-theme="light"] .text-slate-200 {
+  color: #1e293b !important;
+}
+[data-theme="light"] .text-slate-300 {
+  color: #334155 !important;
+}
+[data-theme="light"] .text-slate-400 {
+  color: #64748b !important;
+}
+[data-theme="light"] .text-slate-500 {
+  color: #94a3b8 !important;
+}
+[data-theme="light"] .text-emerald-400,
+[data-theme="light"] .text-emerald-300 {
+  color: #059669 !important;
+}
+[data-theme="light"] .bg-emerald-500\/20,
+[data-theme="light"] .bg-emerald-500\/10 {
+  background-color: rgba(5, 150, 105, 0.12) !important;
+}
+[data-theme="light"] .border-emerald-500\/40,
+[data-theme="light"] .border-emerald-500\/30,
+[data-theme="light"] .border-emerald-500\/20 {
+  border-color: rgba(5, 150, 105, 0.35) !important;
+}
+[data-theme="light"] .bg-emerald-600 {
+  background-color: #059669 !important;
+  color: #ffffff !important;
+}
+[data-theme="light"] .bg-emerald-950\/60,
+[data-theme="light"] .bg-emerald-950\/40 {
+  background-color: rgba(209, 250, 229, 0.7) !important;
+  color: #065f46 !important;
+}
+
+/* ========================================================
+   CINEMATIC SLIGHT ZOOM (KEN BURNS EFFECT)
+   ======================================================== */
+@keyframes kenburnsZoom {
+  0% {
+    transform: scale(1.0);
+  }
+  50% {
+    transform: scale(1.09);
+  }
+  100% {
+    transform: scale(1.0);
+  }
+}
+
+.animate-subtle-zoom {
+  animation: kenburnsZoom 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* ========================================================
+   GRAPH TEXT & LABELS VISIBILITY ENGINE
+   Guarantees that all graph axes, ticks, numbers, legends,
+   and labels are brightly visible with crisp contrast
+   ======================================================== */
+.recharts-wrapper text,
+.recharts-cartesian-axis-tick text,
+.recharts-cartesian-axis-tick-value,
+.recharts-text,
+.recharts-label,
+.recharts-legend-item-text {
+  fill: #e2e8f0 !important;
+  color: #e2e8f0 !important;
+  font-family: inherit;
+  font-weight: 500;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.recharts-cartesian-axis-line,
+.recharts-cartesian-axis-tick-line {
+  stroke: #64748b !important;
+  stroke-width: 1.5px;
+}
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #334155 !important;
+  stroke-opacity: 0.6 !important;
+}
+
+.recharts-default-tooltip {
+  background-color: #020617 !important;
+  border: 1px solid #475569 !important;
+  color: #f8fafc !important;
+  border-radius: 8px !important;
+}
+
+.recharts-tooltip-label {
+  color: #38bdf8 !important;
+  font-weight: 600 !important;
+}
+
+.recharts-tooltip-item {
+  color: #f1f5f9 !important;
+}
+

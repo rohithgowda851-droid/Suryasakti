@@ -1,0 +1,120 @@
+version: '3.8'
+
+services:
+  # 1. Apache ZooKeeper for Kafka Coordination
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: renewable-zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+    networks:
+      - bigdata-net
+
+  # 2. Apache Kafka Broker
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: renewable-kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+    networks:
+      - bigdata-net
+
+  # 3. Apache Spark Master Node
+  spark-master:
+    image: bitnami/spark:3.5.0
+    container_name: renewable-spark-master
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    networks:
+      - bigdata-net
+
+  # 4. Apache Spark Worker Node 1
+  spark-worker-1:
+    image: bitnami/spark:3.5.0
+    container_name: renewable-spark-worker-1
+    depends_on:
+      - spark-master
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=2G
+      - SPARK_WORKER_CORES=2
+    networks:
+      - bigdata-net
+
+  # 5. Apache Spark Worker Node 2
+  spark-worker-2:
+    image: bitnami/spark:3.5.0
+    container_name: renewable-spark-worker-2
+    depends_on:
+      - spark-master
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=2G
+      - SPARK_WORKER_CORES=2
+    networks:
+      - bigdata-net
+
+  # 6. PostgreSQL with TimescaleDB Extension for Time-Series Big Data
+  timescaledb:
+    image: timescale/timescaledb:latest-pg15
+    container_name: renewable-timescaledb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: renewable_intelligence
+    ports:
+      - "5432:5432"
+    volumes:
+      - timescaledb_data:/var/lib/postgresql/data
+      - ./server/db/schema.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - bigdata-net
+
+  # 7. Renewable Energy Intelligence & Risk Assessment Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: renewable-platform-app
+    depends_on:
+      - kafka
+      - spark-master
+      - timescaledb
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - KAFKA_BROKERS=kafka:29092
+      - SPARK_MASTER_URI=spark://spark-master:7077
+      - DATABASE_URL=postgresql://postgres:postgrespassword@timescaledb:5432/renewable_intelligence
+    networks:
+      - bigdata-net
+
+networks:
+  bigdata-net:
+    driver: bridge
+
+volumes:
+  timescaledb_data:

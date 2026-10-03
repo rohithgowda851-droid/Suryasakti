@@ -1,0 +1,6 @@
+{
+  "name": "Suryasakti",
+  "description": "Real-Time Big Data Processing, Anomaly Detection, Predictive Risk Analysis and Energy Forecasting using Scala, Apache Spark, and Kafka",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
